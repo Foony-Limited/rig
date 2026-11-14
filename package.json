@@ -1,0 +1,58 @@
+{
+  "name": "@foony/rig",
+  "version": "0.1.0",
+  "description": "Spine-style 2D skeletal animation for the web: rigs as JSON, drawn on a 2D canvas, with a CLI.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Foony-Limited/rig.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Foony-Limited/rig/issues"
+  },
+  "homepage": "https://github.com/Foony-Limited/rig#readme",
+  "keywords": [
+    "foony",
+    "animation",
+    "skeletal-animation",
+    "spine",
+    "rig",
+    "canvas"
+  ],
+  "type": "module",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "sideEffects": false,
+  "bin": {
+    "foony-rig": "./lib/cli/rigCli.js"
+  },
+  "files": [
+    "lib",
+    "src/**/*.ts",
+    "!src/**/*.test.ts"
+  ],
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js"
+    }
+  },
+  "scripts": {
+    "prepublishOnly": "npm run build && npm test",
+    "build": "npm run clean && tsc -p tsconfig.build.json && chmod +x lib/cli/rigCli.js",
+    "clean": "rm -rf lib",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.8"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
